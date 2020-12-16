@@ -21,7 +21,9 @@ class Search extends Component{
                 this.projectChange = this.projectChange.bind(this);
                 this.companyChange = this.companyChange.bind(this);
                 this.departmentChange = this.departmentChange.bind(this);
-                this.handleSubmit = this.handleSubmit.bind(this);  
+                this.dataInput = this.dataInput.bind(this);
+                this.handleSubmit = this.handleSubmit.bind(this);
+                  
             }
         // project get value
             projectChange (event){
@@ -30,11 +32,10 @@ class Search extends Component{
 
                 });
 
-                // this.componentDidMount();
+
                 this.handleSubmit();
-                // e.preventDefault();
             
-                                };
+                };
         //department get value
             departmentChange (event){
                 this.setState({ 
@@ -42,58 +43,56 @@ class Search extends Component{
                                 
                 });
 
-                // this.componentDidMount();
                 this.handleSubmit();
-                // e.preventDefault();
                                     
-                                };
+                };
         //company get value
-            companyChange (event) {
+        companyChange (event) {
                 this.setState({ 
                     companys: event.target.value
                                                 
                 });
                     
-                // this.componentDidMount();
-                this.handleSubmit();
-                // e.preventDefault();
-                                                        
-                                };
-
-
-handleSubmit(event) {
-     
-alert("click ok")
-    //  event.preventDefault();
-         this.componentDidMount();
-         
-                    }                    
-
-            componentDidMount() {
+                this.handleSubmit();                           
                 
-                    console.log(this.state);  
-                    let formData = new FormData();
-                    formData.append('projects', this.state.projects);
-                    formData.append('companys', this.state.companys);
-                    formData.append('departments', this.state.departments);
-                    formData.append('search',  this.state.search);
-            axios.post("http://127.0.0.1:8000/api/getSerchData", formData)
-            .then(response=>{
-                console.log(response);
-                const search = response.data
-            
-                        this.setState({
+                };
 
-                            search
-                                        
-                                    });
-            
-                        });
+        handleSubmit(event) {
+     
+            alert("click ok")
+         this.dataInput();
+         
+                    }
+        dataInput(event){
+            console.log(this.state);  
+            let formData = new FormData();
+            formData.append('projects', this.state.projects);
+            formData.append('companys', this.state.companys);
+            formData.append('departments', this.state.departments);
+            formData.append('search',  this.state.search);
+        axios.post("http://127.0.0.1:8000/api/getSerchData", formData)
+        .then(response=>{
+        console.log(response);
+        const search = response.data
+
+                this.setState({
+
+                    search
+                                
+                            });
+
+                });
+
+        }               
+
+        componentDidMount() {
+                
+                this.dataInput();
             
             }    
 
 
-    render(){
+render(){
    
     return(
 
