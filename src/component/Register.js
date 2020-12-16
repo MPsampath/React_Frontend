@@ -20,10 +20,10 @@ function Register() {
         const res = await inputservice.save(data);
 
         if(res.sucsess){
-            alert("Register sucsessfull !!!....")
+            console.log("Register sucsessfull !!!....")
         }else
         {
-            alert("Register unsucsessful !!...")
+            console.log("Register unsucsessful !!...")
         }
        
     }
