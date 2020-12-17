@@ -60,6 +60,7 @@ class Search extends Component{
         handleSubmit(event) {
      
             alert("click ok")
+            
          this.dataInput();
          
                     }
